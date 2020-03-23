@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Project_UTS</string>
+    <string name="splash_title">Gudangku</string>
+    <string name="home_title">Gudang</string>
+    <string name="add_title">Data Barang</string>
+    <string name="home_add_data_text">Tambah data</string>
+    <string name="home_search_data_text">Search data</string>
+    <string name="add_sec_title">Masukan data barang masuk atau keluar</string>
+    <string name="add_button_text">Tambah Barang</string>
 </resources>
