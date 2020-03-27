@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorVeryLightGrey"
     android:orientation="vertical"
-    tools:context=".add_data_activity">
+    tools:context=".activities.Add_data_activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"

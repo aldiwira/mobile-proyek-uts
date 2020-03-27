@@ -1,14 +1,16 @@
-package com.aldi.project_uts;
+package com.aldi.project_uts.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class add_data_activity extends AppCompatActivity {
+import com.aldi.project_uts.R;
+
+public class Add_Item extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_data);
+        setContentView(R.layout.activity_add_item);
     }
 }
