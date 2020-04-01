@@ -7,4 +7,5 @@
     <string name="home_search_data_text">Search data</string>
     <string name="add_sec_title">Masukan data barang masuk atau keluar</string>
     <string name="add_button_text">Tambah Barang</string>
+    <string name="submit_button_text">Simpan Record</string>
 </resources>

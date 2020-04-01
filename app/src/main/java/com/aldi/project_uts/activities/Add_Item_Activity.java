@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.aldi.project_uts.R;
 
-public class Add_data_activity extends AppCompatActivity {
+public class Add_Item_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_data);
+        setContentView(R.layout.activity_add_item);
     }
 }
