@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements TransactionAdapte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        account = new Account();
         setupLayout();
         setDateData();
         setupRV();
@@ -58,17 +59,12 @@ public class MainActivity extends AppCompatActivity implements TransactionAdapte
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         transactionsView.setLayoutManager(layoutManager);
     }
-
-    public void handleAddTransaction(View view) {
-        worldOfIntent = new Intent(MainActivity.this, Add_Data_Activity.class);
-        worldOfIntent.putExtra(TRANSACTION_KEY, new Transaction());
-        startActivityForResult(worldOfIntent, INSERT_REQUEST);
-        finish();
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT_CANCELED){
+            return;
+        }
         if (resultCode == RESULT_OK){
             Transaction transaction = data.getParcelableExtra(TRANSACTION_KEY);
             if (requestCode == INSERT_REQUEST){
@@ -77,13 +73,17 @@ public class MainActivity extends AppCompatActivity implements TransactionAdapte
             transactionAdapter.notifyDataSetChanged();
         }
     }
+    public void handleAddTransaction(View view) {
+        worldOfIntent = new Intent(MainActivity.this, Add_Data_Activity.class);
+        worldOfIntent.putExtra(TRANSACTION_KEY, new Transaction());
+        startActivityForResult(worldOfIntent, INSERT_REQUEST);
+    }
 
     @Override
     public void onTransactionClicked(int index, Transaction item) {
-        worldOfIntent = new Intent(MainActivity.this, Add_Data_Activity.class);
+        worldOfIntent = new Intent(this, Add_Data_Activity.class);
         worldOfIntent.putExtra(TRANSACTION_KEY, item);
         worldOfIntent.putExtra(INDEX_KEY, index);
         startActivityForResult(worldOfIntent, UPDATE_REQUEST);
-        finish();
     }
 }

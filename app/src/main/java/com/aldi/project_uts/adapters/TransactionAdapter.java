@@ -1,5 +1,6 @@
 package com.aldi.project_uts.adapters;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -27,7 +28,8 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -53,8 +55,8 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         public void bind(final int index, final Transaction item){
             timeText.setText(item.getTime());
             dateText.setText(item.getDate());
-            inCount.setText(item.getSumBarangMasuk());
-            outCount.setText(item.getSumBarangKeluar());
+            inCount.setText(String.valueOf(item.getSumBarangMasuk()));
+            outCount.setText(String.valueOf(item.getSumBarangKeluar()));
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
