@@ -30,16 +30,31 @@
         android:id="@+id/item_value_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
         android:fontFamily="@font/productsans_reguler"
-        android:text="2000 buah"
+        android:text="2000"
         android:textColor="@color/colorBlack"
         android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/item_name_text"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/item_name_text"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/item_type_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="26dp"
+        android:fontFamily="@font/productsans_reguler"
+        android:text="Barang"
+        android:textColor="@color/colorBlack"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/item_name_text"
+        app:layout_constraintStart_toEndOf="@+id/item_value_text"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
         android:id="@+id/item_status_data_text"

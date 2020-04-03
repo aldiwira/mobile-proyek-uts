@@ -169,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:fontFamily="@font/productsans_reguler"
-                    android:text="Kg/Liter"
+                    android:text="Liter"
                     android:textSize="18dp"
                     tools:layout_editor_absoluteX="45dp"
                     tools:layout_editor_absoluteY="429dp" />
@@ -181,6 +181,16 @@
                     android:layout_margin="10dp"
                     android:fontFamily="@font/productsans_reguler"
                     android:text="Box"
+                    android:textSize="18dp"
+                    tools:layout_editor_absoluteX="45dp"
+                    tools:layout_editor_absoluteY="429dp" />
+                <RadioButton
+                    android:id="@+id/radio_type_kg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/productsans_reguler"
+                    android:text="Kg"
                     android:textSize="18dp"
                     tools:layout_editor_absoluteX="45dp"
                     tools:layout_editor_absoluteY="429dp" />
