@@ -69,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements TransactionAdapte
             Transaction transaction = data.getParcelableExtra(TRANSACTION_KEY);
             if (requestCode == INSERT_REQUEST){
                 account.addTransactions(transaction);
+            } else if(requestCode == UPDATE_REQUEST){
+                int index = data.getIntExtra(INDEX_KEY, 0);
+                account.updateTransaction(index, transaction);
             }
             transactionAdapter.notifyDataSetChanged();
         }
