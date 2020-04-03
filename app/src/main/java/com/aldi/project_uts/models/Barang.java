@@ -5,10 +5,10 @@ import android.os.Parcelable;
 
 public class Barang implements Parcelable {
     public enum SatuanBarang{
-        PCS, LITER, KG, BOX
+        PCS, LITER, KG, BOX, EMPTY
     }
     public enum Status{
-        MASUK, KELUAR
+        MASUK, KELUAR, EMPTY
     }
     private String nama_Barang;
     private int jumlah;

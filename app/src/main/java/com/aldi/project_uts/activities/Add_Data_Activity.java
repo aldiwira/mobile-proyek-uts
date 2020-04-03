@@ -72,9 +72,8 @@ public class Add_Data_Activity extends AppCompatActivity implements BarangAdapte
         recordView.setLayoutManager(layoutManager);
     }
     public void handleSaveRecord(View view) {
-
-        record.setSumBarangMasuk(2);
-        record.setSumBarangKeluar(2);
+        record.setSumBarangMasuk(sum_in_item);
+        record.setSumBarangKeluar(sum_out_item);
         record.setDate(date);
         record.setTime(time);
         intent = new Intent();
