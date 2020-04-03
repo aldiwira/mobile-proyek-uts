@@ -25,7 +25,7 @@ public class Account {
         Transaction trans = record.get(index);
         this.record.remove(index);
     }
-    public void update(int index, Transaction trans){
+    public void updateTransaction(int index, Transaction trans){
         this.record.set(index, trans);
     }
 }

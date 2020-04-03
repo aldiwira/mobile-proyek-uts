@@ -4,18 +4,24 @@ package com.aldi.project_uts.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Transaction implements Parcelable {
-    int sumBarangKeluar, sumBarangMasuk;
-    String date, time;
+    private int sumBarangKeluar, sumBarangMasuk;
+    private String date, time;
+    private List<Barang> items;
 
     public Transaction() {
+        this.items = new ArrayList<>();
     }
 
-    public Transaction(int sumBarangKeluar, int sumBarangMasuk, String date, String time) {
+    public Transaction(int sumBarangKeluar, int sumBarangMasuk, String date, String time, List<Barang> items) {
         this.sumBarangKeluar = sumBarangKeluar;
         this.sumBarangMasuk = sumBarangMasuk;
         this.date = date;
         this.time = time;
+        this.items = items;
     }
 
     public int getSumBarangKeluar() {
@@ -50,6 +56,24 @@ public class Transaction implements Parcelable {
         this.time = time;
     }
 
+    public List<Barang> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Barang> items) {
+        this.items = items;
+    }
+
+    public void addBarang(Barang barang){
+        this.items.add(barang);
+    }
+    public void updateBarang(Barang barang, int index){
+        this.items.set(index, barang);
+    }
+    public void deleteBarang(int index){
+        Barang barang = this.items.get(index);
+        this.items.remove(barang);
+    }
 
     @Override
     public int describeContents() {
@@ -62,6 +86,7 @@ public class Transaction implements Parcelable {
         dest.writeInt(this.sumBarangMasuk);
         dest.writeString(this.date);
         dest.writeString(this.time);
+        dest.writeTypedList(this.items);
     }
 
     protected Transaction(Parcel in) {
@@ -69,9 +94,10 @@ public class Transaction implements Parcelable {
         this.sumBarangMasuk = in.readInt();
         this.date = in.readString();
         this.time = in.readString();
+        this.items = in.createTypedArrayList(Barang.CREATOR);
     }
 
-    public static final Parcelable.Creator<Transaction> CREATOR = new Parcelable.Creator<Transaction>() {
+    public static final Creator<Transaction> CREATOR = new Creator<Transaction>() {
         @Override
         public Transaction createFromParcel(Parcel source) {
             return new Transaction(source);
