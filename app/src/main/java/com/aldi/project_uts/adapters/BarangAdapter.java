@@ -84,7 +84,7 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ViewHolder
             if (item.getStatus() == Barang.Status.MASUK){
                 status = "Barang Masuk";
             } else if(item.getStatus() == Barang.Status.KELUAR){
-                status = "Keluar";
+                status = "Barang Keluar";
             }
             return status;
         }
