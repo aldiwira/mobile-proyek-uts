@@ -74,6 +74,9 @@ public class Transaction implements Parcelable {
         Barang barang = this.items.get(index);
         this.items.remove(barang);
     }
+    public Barang getBarang(int index){
+        return this.items.get(index);
+    }
 
     @Override
     public int describeContents() {
