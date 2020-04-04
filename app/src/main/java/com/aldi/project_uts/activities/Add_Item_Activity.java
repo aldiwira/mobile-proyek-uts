@@ -38,7 +38,7 @@ public class Add_Item_Activity extends AppCompatActivity {
             barang = extras.getParcelable(Add_Data_Activity.BARANG_KEY);
             index = extras.getInt(Add_Data_Activity.INDEX_KEY, 0);
             namaBarang.setText(barang.getNama_Barang());
-            valueBarang.setText(barang.getJumlah());
+            valueBarang.setText(String.valueOf(barang.getJumlah()));
             getTypeBarang(barang);
             getStatus(barang);
         }

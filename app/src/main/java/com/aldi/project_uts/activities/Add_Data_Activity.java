@@ -100,7 +100,10 @@ public class Add_Data_Activity extends AppCompatActivity implements BarangAdapte
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RESULT_OK){
+        if (resultCode == RESULT_CANCELED){
+            return;
+        }
+        if(resultCode == RESULT_OK){
             Barang barang = data.getParcelableExtra(BARANG_KEY);
             if (barang.getStatus() == Barang.Status.MASUK){
                 sum_in_item += 1;

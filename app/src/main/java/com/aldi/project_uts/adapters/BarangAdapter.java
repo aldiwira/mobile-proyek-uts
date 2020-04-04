@@ -57,7 +57,7 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ViewHolder
         }
         public void bind(final int index, final Barang item){
             namaBarang.setText(item.getNama_Barang());
-            jumlahBarang.setText(item.getJumlah());
+            jumlahBarang.setText(String.valueOf(item.getJumlah()));
             typeBarang.setText(typeValue(item));
             statusBarang.setText(statusValue(item));
             itemView.setOnClickListener(new View.OnClickListener() {
