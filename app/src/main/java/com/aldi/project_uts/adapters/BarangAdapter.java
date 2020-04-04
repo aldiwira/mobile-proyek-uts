@@ -52,13 +52,12 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ViewHolder
             super(itemView);
             namaBarang = itemView.findViewById(R.id.item_name_text);
             jumlahBarang = itemView.findViewById(R.id.item_value_text);
-            typeBarang = itemView.findViewById(R.id.item_type_text);
             statusBarang = itemView.findViewById(R.id.item_status_data_text);
         }
         public void bind(final int index, final Barang item){
             namaBarang.setText(item.getNama_Barang());
-            jumlahBarang.setText(String.valueOf(item.getJumlah()));
-            typeBarang.setText(typeValue(item));
+            String value = String.valueOf(item.getJumlah())+" "+typeValue(item);
+            jumlahBarang.setText(value);
             statusBarang.setText(statusValue(item));
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
