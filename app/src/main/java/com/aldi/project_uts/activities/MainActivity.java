@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.aldi.project_uts.R;
 import com.aldi.project_uts.adapters.TransactionAdapter;
 import com.aldi.project_uts.models.Account;
+import com.aldi.project_uts.models.Record;
 import com.aldi.project_uts.models.Transaction;
 
 import java.text.SimpleDateFormat;
@@ -33,17 +34,23 @@ public class MainActivity extends AppCompatActivity implements TransactionAdapte
     private TransactionAdapter transactionAdapter;
     private RecyclerView transactionsView;
     private Account account;
+    private Record record;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        account = new Account();
+        setupVar();
         setupLayout();
         setDateData();
         setupRV();
         setupDeleteRecord();
+    }
+    private void setupVar(){
+        account = new Account();
+        record = new Record(this);
+        account.setTransactions(record.getTransaction());
     }
     private void setupLayout(){
         dateText = findViewById(R.id.date_text_home);
@@ -108,5 +115,15 @@ public class MainActivity extends AppCompatActivity implements TransactionAdapte
         worldOfIntent.putExtra(TRANSACTION_KEY, item);
         worldOfIntent.putExtra(INDEX_KEY, index);
         startActivityForResult(worldOfIntent, UPDATE_REQUEST);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        record.setTransaction(account.getTransactions());
+    }
+
+    public void handleSaveRecords(View view) {
+        record.setTransaction(account.getTransactions());
     }
 }

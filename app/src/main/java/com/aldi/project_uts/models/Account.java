@@ -5,9 +5,10 @@ import java.util.List;
 
 public class Account {
     private List<Transaction> record;
+    private Record temp;
 
     public Account() {
-        this.record = new ArrayList<>();
+
     }
 
     public List<Transaction> getTransactions(){
