@@ -23,6 +23,7 @@
             android:background="@drawable/header_home"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -44,11 +45,11 @@
                 android:id="@+id/date_text_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/productsans_light"
                 android:text="Rabu, 25 Maret 2020"
                 android:textColor="@color/colorWhite"
                 android:textSize="20dp"
-                android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -86,10 +87,10 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:onClick="handleAddTransaction"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:onClick="handleAddTransaction">
 
                     <ImageView
                         android:id="@+id/add_button_image"
@@ -116,20 +117,23 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/add_button_image" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:onClick="handleSaveRecords">
 
                     <ImageView
                         android:id="@+id/search_button_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginBottom="23dp"
-                        android:background="@drawable/ic_search_black_24dp"
+                        android:layout_width="22dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginBottom="22dp"
+                        android:background="@drawable/ic_save_black_24dp"
+                        android:scaleType="center"
                         app:layout_constraintBottom_toTopOf="@+id/search_text"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -139,7 +143,7 @@
                         android:id="@+id/search_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="30dp"
+                        android:layout_marginBottom="28dp"
                         android:fontFamily="@font/productsans_light"
                         android:text="@string/home_search_data_text"
                         android:textColor="@color/colorBlack"
@@ -148,6 +152,12 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/search_button_image" />
+
+                    <androidx.constraintlayout.widget.Barrier
+                        android:id="@+id/barrier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:barrierDirection="top" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
