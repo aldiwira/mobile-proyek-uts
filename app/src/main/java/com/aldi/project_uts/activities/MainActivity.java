@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements TransactionAdapte
         setupLayout();
         setDateData();
         setupRV();
+        setupDeleteRecord();
     }
     private void setupLayout(){
         dateText = findViewById(R.id.date_text_home);
