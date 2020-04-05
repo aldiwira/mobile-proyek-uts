@@ -10,4 +10,5 @@
     <color name="colorVeryLightGrey">#E5E5E5</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
+    <color name="ic_launcher_background">#61D1DD</color>
 </resources>
