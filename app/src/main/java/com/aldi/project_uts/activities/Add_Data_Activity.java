@@ -61,14 +61,14 @@ public class Add_Data_Activity extends AppCompatActivity implements BarangAdapte
         Calendar calendar = Calendar.getInstance();
         date = new SimpleDateFormat("EEEE, dd MMMM yyyy").format(calendar.getTime());
         time = new SimpleDateFormat("hh:mm a").format(calendar.getTime());
-        dateText.setText(date+" "+sum_in_item+" "+sum_out_item);
+        dateText.setText(date);
     }
     private void getParcelableData(){
         Bundle extras = getIntent().getExtras();
         if (extras != null){
             index = extras.getInt(MainActivity.INDEX_KEY, 0);
             record = extras.getParcelable(MainActivity.TRANSACTION_KEY);
-            dateText.setText(record.getDate()+" "+sum_in_item+" "+sum_out_item);
+            dateText.setText(record.getDate());
             sum_in_item = record.getSumBarangMasuk();
             sum_out_item = record.getSumBarangKeluar();
         }
