@@ -16,6 +16,7 @@ import com.aldi.project_uts.R;
 import com.aldi.project_uts.adapters.BarangAdapter;
 import com.aldi.project_uts.models.Barang;
 import com.aldi.project_uts.models.Transaction;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -61,7 +62,10 @@ public class Add_Data_Activity extends AppCompatActivity implements BarangAdapte
         Calendar calendar = Calendar.getInstance();
         date = new SimpleDateFormat("EEEE, dd MMMM yyyy").format(calendar.getTime());
         time = new SimpleDateFormat("hh:mm a").format(calendar.getTime());
-        dateText.setText(date);
+        String temp = dateText.getText().toString();
+        if (temp == null){
+            dateText.setText(date);
+        }
     }
     private void getParcelableData(){
         Bundle extras = getIntent().getExtras();
@@ -99,15 +103,19 @@ public class Add_Data_Activity extends AppCompatActivity implements BarangAdapte
         mItemTouchHelper.attachToRecyclerView(recordView);
     }
     public void handleSaveRecord(View view) {
-        record.setSumBarangMasuk(sum_in_item);
-        record.setSumBarangKeluar(sum_out_item);
-        record.setDate(date);
-        record.setTime(time);
-        intent = new Intent();
-        intent.putExtra(MainActivity.TRANSACTION_KEY, record);
-        intent.putExtra(MainActivity.INDEX_KEY, index);
-        setResult(RESULT_OK, intent);
-        finish();
+        if (record.getItems().isEmpty()){
+            snackBarMaker("Data yang ditambahkan kosong");
+        }else{
+            record.setSumBarangMasuk(sum_in_item);
+            record.setSumBarangKeluar(sum_out_item);
+            record.setDate(date);
+            record.setTime(time);
+            intent = new Intent();
+            intent.putExtra(MainActivity.TRANSACTION_KEY, record);
+            intent.putExtra(MainActivity.INDEX_KEY, index);
+            setResult(RESULT_OK, intent);
+            finish();
+        }
     }
 
     @Override
@@ -156,5 +164,12 @@ public class Add_Data_Activity extends AppCompatActivity implements BarangAdapte
                 sum_out_item -= 1;
             }
         }
+    }
+    public void snackBarMaker(String msg){
+        Snackbar sb = Snackbar.make(getWindow().getDecorView().getRootView(), msg, Snackbar.LENGTH_LONG);
+        sb.setTextColor(getResources().getColor(R.color.colorWhite));
+        View sbView = sb.getView();
+        sbView.setBackgroundColor(getResources().getColor(R.color.colorBlue));
+        sb.show();
     }
 }
