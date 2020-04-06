@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 
 import com.aldi.project_uts.R;
 import com.aldi.project_uts.models.Barang;
+import com.google.android.material.snackbar.Snackbar;
 
 public class Add_Item_Activity extends AppCompatActivity {
     private EditText namaBarang, valueBarang;
@@ -84,14 +85,44 @@ public class Add_Item_Activity extends AppCompatActivity {
 
 
     public void handleAddData(View view) {
-        barang.setNama_Barang(namaBarang.getText().toString());
-        barang.setJumlah(Integer.parseInt(valueBarang.getText().toString()));
-        barang.setSatuan(getTypeBarang());
-        barang.setStatus(getStatus());
-        intent = new Intent();
-        intent.putExtra(Add_Data_Activity.BARANG_KEY, barang);
-        intent.putExtra(Add_Data_Activity.INDEX_KEY, index);
-        setResult(RESULT_OK, intent);
-        finish();
+        if (isNullInsert()){
+            snackBarMaker("Isi semua data terlebih dahulu");
+        } else {
+            barang.setNama_Barang(namaBarang.getText().toString());
+            barang.setJumlah(Integer.parseInt(valueBarang.getText().toString()));
+            barang.setSatuan(getTypeBarang());
+            barang.setStatus(getStatus());
+            intent = new Intent();
+            intent.putExtra(Add_Data_Activity.BARANG_KEY, barang);
+            intent.putExtra(Add_Data_Activity.INDEX_KEY, index);
+            setResult(RESULT_OK, intent);
+            finish();
+        }
+
+    }
+    public Boolean isNullInsert(){
+        Boolean stat = false;
+        if (namaBarang.getText().toString().isEmpty()){
+            stat = true;
+            namaBarang.setError("Masukkan nama barang terlebih dahulu");
+        }
+        if (valueBarang.getText().toString().equalsIgnoreCase("0") || valueBarang.getText().toString().isEmpty()){
+            stat = true;
+            valueBarang.setError("Masukkan jumlah barang terlebih dahulu");
+        }
+        if(getTypeBarang() == Barang.SatuanBarang.EMPTY){
+            stat = true;
+        }
+        if(getStatus() == Barang.Status.EMPTY){
+            stat = true;
+        }
+        return stat;
+    }
+    public void snackBarMaker(String msg){
+        Snackbar sb = Snackbar.make(getWindow().getDecorView().getRootView(), msg, Snackbar.LENGTH_LONG);
+        sb.setTextColor(getResources().getColor(R.color.colorWhite));
+        View sbView = sb.getView();
+        sbView.setBackgroundColor(getResources().getColor(R.color.colorBlue));
+        sb.show();
     }
 }
