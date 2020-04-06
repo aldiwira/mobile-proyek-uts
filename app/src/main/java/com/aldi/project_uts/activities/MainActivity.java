@@ -17,6 +17,7 @@ import com.aldi.project_uts.adapters.TransactionAdapter;
 import com.aldi.project_uts.models.Account;
 import com.aldi.project_uts.models.Record;
 import com.aldi.project_uts.models.Transaction;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -124,6 +125,19 @@ public class MainActivity extends AppCompatActivity implements TransactionAdapte
     }
 
     public void handleSaveRecords(View view) {
-        record.setTransaction(account.getTransactions());
+        if (account.getTransactions() != null){
+            record.setTransaction(account.getTransactions());
+            snackBarMaker("Data berhasil disimpan");
+        } else {
+            snackBarMaker("Tidak ada data yang disimpan");
+        }
+    }
+
+    public void snackBarMaker(String msg){
+        Snackbar sb = Snackbar.make(getWindow().getDecorView().getRootView(), msg, Snackbar.LENGTH_LONG);
+        sb.setTextColor(getResources().getColor(R.color.colorWhite));
+        View sbView = sb.getView();
+        sbView.setBackgroundColor(getResources().getColor(R.color.colorBlue));
+        sb.show();
     }
 }
